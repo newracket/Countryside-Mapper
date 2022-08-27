@@ -16,7 +16,7 @@ class CustomNavbar extends React.Component<Props> {
         return (
             <Navbar className="nav" variant="dark" expand="lg" fixed={this.props.sticky ? "top" : undefined}>
                 <Container>
-                    <Navbar.Brand><img className="iconImg" src="/country.png" alt="Countryside Mapper"/></Navbar.Brand>
+                    <Navbar.Brand><img className="iconImg" src="/country.png" alt="Countryside Mapper"/> </Navbar.Brand>
 
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
