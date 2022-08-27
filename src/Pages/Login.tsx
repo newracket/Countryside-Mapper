@@ -5,22 +5,27 @@ import CustomNavbar from "../Components/CustomNavbar";
 class Home extends React.Component {
     render() {
         return (
-            <>
-                <CustomNavbar page="login"></CustomNavbar>
+            <div className="pageContainer">
+                <CustomNavbar page="login" sticky={false}></CustomNavbar>
 
                 <Container className="loginContainer">
-                    <div className="loginDiv">
-                        <h2>Login</h2>
-                        <input name="username" className="form-control" placeholder="username" type="text" autoComplete="off" />
-                        <input name="password" className="form-control" placeholder="password" type="password" autoComplete="off" />
-                        <button className="btn btn-primary">Submit</button>
-                        <hr />
-                        <button className="btn btn-success">
-                            Signup
-                        </button>
+                    <div className="iconLoginGroup">
+                        <div className="logo">
+                            <img src="icon.png" className="logoImage" />
+                        </div>
+                        <div className="loginDiv">
+                            <h2>Login</h2>
+                            <input name="username" className="form-control" placeholder="username" type="text" autoComplete="off" />
+                            <input name="password" className="form-control" placeholder="password" type="password" autoComplete="off" />
+                            <button className="btn btn-primary">Submit</button>
+                            <hr />
+                            <button className="btn btn-success">
+                                Signup
+                            </button>
+                        </div>
                     </div>
                 </Container>
-            </>
+            </div>
         );
     }
 }

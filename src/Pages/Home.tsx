@@ -5,7 +5,7 @@ class Home extends React.Component {
     render() {
         return (
             <>
-                <CustomNavbar page="home"></CustomNavbar>
+                <CustomNavbar page="home" sticky={true}></CustomNavbar>
                 Home
             </>
         );

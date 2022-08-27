@@ -9,6 +9,30 @@ body,
   height: 100%;
 }
 
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.nav {
+  background-color: rgb(34, 177, 76);
+}
+
+/* Map CSS */
+.mapContainer {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
 /* Login CSS */
 .loginContainer {
   display: flex;
@@ -17,10 +41,22 @@ body,
   align-items: center;
 }
 
+.iconLoginGroup {
+  border-radius: 0.5rem;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.logo {
+  background-color: rgb(226, 230, 185);
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
 .loginDiv {
   background-color: rgb(220, 220, 220);
-  border-radius: 8px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  border-radius: 0 0.5rem 0.5rem 0;
 
   display: inline-block;
   padding: 100px 100px;

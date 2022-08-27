@@ -7,20 +7,22 @@ import Navbar from 'react-bootstrap/Navbar';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 interface Props {
-    page: string
+    page: string;
+    sticky: boolean;
 }
 
 class CustomNavbar extends React.Component<Props> {
     render() {
         return (
-            <Navbar className="nav" bg="primary" variant="dark" expand="lg" fixed="top">
+            <Navbar className="nav" variant="dark" expand="lg" fixed={this.props.sticky ? "top" : undefined}>
                 <Container>
-                    <Navbar.Brand>Agritourism App</Navbar.Brand>
+                    <Navbar.Brand>Countryside Mapper</Navbar.Brand>
 
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link href="/" className={this.props.page === "home" ? "active" : ""}>Home</Nav.Link>
                             <Nav.Link href="about" className={this.props.page === "about" ? "active" : ""}>About</Nav.Link>
+                            <Nav.Link href="map" className={this.props.page === "map" ? "active" : ""}>Map</Nav.Link>
                         </Nav>
 
                         <Nav className="ms-auto">
