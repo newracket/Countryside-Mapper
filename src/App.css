@@ -26,11 +26,47 @@ body,
 
   display: flex;
   flex-direction: row;
+  
+  overflow: hidden;
 }
 
 .leaflet-container {
-  width: 100%;
-  height: 100%;
+  flex-grow: 3;
+}
+
+.locationsList {
+  flex-grow: 1;
+  padding: 20px;
+
+  overflow-y: auto;
+}
+
+.eventGroup {
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.eventGroup>h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration: underline;
+  
+  margin: 0;
+}
+
+.eventGroup>.host {
+  font-size: 1rem;
+
+  margin: 0;
+}
+
+.eventGroup>.dates {
+  font-size: 1rem;
+  font-style: italic;
+  
+  margin: 0;
 }
 
 /* Login CSS */
