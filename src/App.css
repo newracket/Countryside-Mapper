@@ -26,7 +26,7 @@ body,
 
   display: flex;
   flex-direction: row;
-  
+
   overflow: hidden;
 }
 
@@ -42,30 +42,51 @@ body,
 }
 
 .eventGroup {
-  border: 1px solid black;
+  box-sizing: border-box;
+  outline: 1px solid black;
   border-radius: 0.5rem;
   margin-bottom: 20px;
   padding: 10px;
+
+  display: flex;
+  flex-direction: row;
+  height: 150px;
 }
 
-.eventGroup>h1 {
-  font-size: 2rem;
+.eventGroup.focus {
+  outline: 5px solid red !important;
+}
+
+.eventText {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.eventText>h1 {
+  font-size: 1.5rem;
   font-weight: bold;
-  text-decoration: underline;
-  
+
   margin: 0;
 }
 
-.eventGroup>.host {
+.eventText>h1>a {
+  color: black;
+}
+
+.eventText>.host {
   font-size: 1rem;
 
   margin: 0;
 }
 
-.eventGroup>.dates {
+.eventText>.dates {
   font-size: 1rem;
   font-style: italic;
-  
+
+  margin: 0;
+}
+
+.eventText>.description {
   margin: 0;
 }
 

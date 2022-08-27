@@ -7,4 +7,6 @@ export type LocationData = {
     startDate: Date;
     endDate: Date;
     description: string;
+    imageLocation: string;
+    website: string;
 }
