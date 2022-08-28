@@ -1,46 +1,14 @@
-# Getting Started with Create React App
+Title: Countryside Mapper
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Our Mission!
 
-## Available Scripts
+Welcome to Countryside Mapper! Our mission is to provide tourists with unique visiting spots. In particular, we focus on the rural areas of Indonesia with agriculture. Some of the commodities include palm oil, natural rubber, cocoa, coffee, tea, cassava, rice, and tropical spices. Feel free to explore this world and plan your next vacation spot. Remember, you are also helping the local economy by planning these visits.
+What our app does!
 
-In the project directory, you can run:
+Combining our knowledge and research, we created an application focused on rural development by increasing tourism. The term is agritourism: attracting members of the public to visit agricultural operations. Our website shows various agricultural and nature sites that tourists could visit. This could also be incorporated by the local people. They can advertise visiting events they are hosting by adding them to the website. During these events, locals can have recreation, entertainment, or educational experiences for visitors. Of course, locals are allowed and encouraged to charge tourists for their services. This will help the local economy by creating jobs and allows for cultural exchange. The sky is the limit for what locals can do with this. And our application is the platform to help them reach it.
+How we built it!
 
-### `npm start`
+We decided to use what we knew in order to create something that could potentially help. Our skill sets ranged from programming in various languages such as react and node.js. However, we had to use some applications we didn’t know like firebase. Regardless, we were pleased to learn more.
+What we learned!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Through our 48-hour experience, we learned a lot about Indonesia, its many islands, and rural life. However, we also learned a lot about ourselves and our skill sets. We did struggle in some places. But that just means our skills are limited and there is so much more for us to learn. We took this as a learning opportunity to enhance our skills. It was a great experience and although we are not from the area, it would be nice to visit someday.
