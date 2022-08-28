@@ -11,6 +11,7 @@ interface Props {
 
 interface State {
     focusedElementIndex: number | null;
+    searchValue: string;
 }
 
 class Map extends React.Component<Props, State> {
@@ -91,8 +92,12 @@ class Map extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
 
-        this.state = { focusedElementIndex: null };
+        this.state = { focusedElementIndex: null, searchValue: "" };
         this.divElements = [];
+
+        this.focusElement = this.focusElement.bind(this);
+        this.searchChanged = this.searchChanged.bind(this);
+        this.filterWithSearch = this.filterWithSearch.bind(this);
     }
 
     focusElement(i: number | null) {
@@ -110,6 +115,29 @@ class Map extends React.Component<Props, State> {
         }
     }
 
+    searchChanged(event: any) {
+        const value = event?.target?.value;
+        if (value === undefined) return;
+
+        this.setState({
+            searchValue: value
+        });
+    }
+
+    filterWithSearch(element: LocationData) {
+        if (this.state.searchValue.length === 0) return true;
+
+        const v = (
+            element.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+            element.host.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+            element.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+            element.website.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+            element.email.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+            element.phone.toLowerCase().includes(this.state.searchValue.toLowerCase())
+        );
+        return v;
+    }
+
     render() {
         return (
             <div className="pageContainer">
@@ -121,35 +149,34 @@ class Map extends React.Component<Props, State> {
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
 
-                        {this.props.locations.map((location, i) => (
+                        {this.props.locations.filter(this.filterWithSearch).map((location, i) => (
                             <Marker position={location.coords} key={i} eventHandlers={{
                                 click: (e) => {
                                     this.focusElement(i);
                                 }
-                            }}>
-                                {/* <Popup>
-                                    {i}. {location.name}<br />
-                                    {location.description}
-                                </Popup> */}
-                            </Marker>
+                            }} />
                         ))}
                     </MapContainer>
-                    <div className="locationsList">
-                        {this.props.locations.map((location, i) => {
-                            return (
-                                <div className={`eventGroup${this.state.focusedElementIndex === i ? " focus" : ""}`} key={i} ref={r => this.divElements.push(r)}>
-                                    <img src={location.imageLocation} />
-                                    <div className="eventText">
-                                        <h1><a href={location.website} target="_blank">{location.name}</a></h1>
-                                        <h2 className="host">Hosted by {location.host}</h2>
-                                        <p className="dates">{location.startDate.toLocaleString("en-us", { dateStyle: "short", timeStyle: "short" })} - {location.endDate.toLocaleString("en-us", { dateStyle: "short", timeStyle: "short" })}</p>
+                    <div className="locationsContainer">
+                        <input name="search" id="search" className="form-control" placeholder="Search" type="text" onChange={this.searchChanged} autoComplete="off" />
+                        <div className="locationsList">
 
-                                        <p className="description">{location.description}</p>
-                                        <p className="contacts"><strong>Email:</strong> {location.email}, <strong>Phone Number</strong>: {location.phone}</p>
+                            {this.props.locations.filter(this.filterWithSearch).map((location, i) => {
+                                return (
+                                    <div className={`eventGroup${this.state.focusedElementIndex === i ? " focus" : ""}`} key={i} ref={r => this.divElements.push(r)}>
+                                        <img src={location.imageLocation} />
+                                        <div className="eventText">
+                                            <h1><a href={location.website} target="_blank">{location.name}</a></h1>
+                                            <h2 className="host">Hosted by {location.host}</h2>
+                                            <p className="dates">{location.startDate.toLocaleString("en-us", { dateStyle: "short", timeStyle: "short" })} - {location.endDate.toLocaleString("en-us", { dateStyle: "short", timeStyle: "short" })}</p>
+
+                                            <p className="description">{location.description}</p>
+                                            <p className="contacts"><strong>Email:</strong> {location.email}, <strong>Phone Number</strong>: {location.phone}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            );
-                        })}
+                                );
+                            })}
+                        </div>
                     </div>
                 </div>
             </div>
