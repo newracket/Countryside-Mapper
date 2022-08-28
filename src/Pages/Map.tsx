@@ -15,6 +15,7 @@ interface State {
 
 class Map extends React.Component<Props, State> {
     divElements: any[];
+    timeout: any;
 
     static defaultProps = {
         position: [0.789, 113.921],
@@ -83,13 +84,17 @@ class Map extends React.Component<Props, State> {
     }
 
     focusElement(i: number | null) {
+        if (this.timeout) {
+            clearTimeout(this.timeout);
+        }
+
         this.setState({
             focusedElementIndex: i
         });
-        
+
         if (i !== null) {
             this.divElements[i].scrollIntoView();
-            setTimeout(() => this.focusElement(null), 2000);
+            this.timeout = setTimeout(() => this.focusElement(null), 2000);
         }
     }
 

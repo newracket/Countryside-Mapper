@@ -26,7 +26,7 @@ class CustomNavbar extends React.Component<Props> {
                         </Nav>
 
                         <Nav className="ms-auto">
-                            <Nav.Link href="login" className={this.props.page === "login" ? "active" : ""}>Login</Nav.Link>
+                            <Nav.Link href="register" className={this.props.page === "register" ? "active" : ""}>Register Event</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
