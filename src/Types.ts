@@ -9,4 +9,6 @@ export type LocationData = {
     description: string;
     imageLocation: string;
     website: string;
+    email: string;
+    phone: string;
 }
