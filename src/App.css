@@ -16,7 +16,10 @@ body,
 }
 
 .nav {
-  background-color: rgb(34, 177, 76);
+  background-color: #4CA0AB;
+  font-family: 'Figtree', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
 }
 
 /* Map CSS */
@@ -148,4 +151,18 @@ hr {
   background-color: rgb(14, 187, 14) !important;
 
   width: 100%;
+}
+
+.iconImg {
+  object-fit: cover;
+  width: 100%;
+  height: 50px;
+}
+
+.navbar-brand, .nav-link {
+  color: #C0D31F !important;
+}
+
+.nav-link:hover {
+  color: #bbc114 !important;
 }
