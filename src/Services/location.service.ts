@@ -1,5 +1,5 @@
 import firebase from "../firebase";
-import ILocationData from "../Types/location.type"
+import { ILocationData } from "../Types"
 const db = firebase.firestore().collection("locations")
 
 class LocationDataService {

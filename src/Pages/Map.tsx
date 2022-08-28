@@ -2,8 +2,9 @@ import React, { useRef } from "react";
 import CustomNavbar from "../Components/CustomNavbar";
 import { MapContainer, Popup, TileLayer, useMap, Marker } from 'react-leaflet'
 import { LatLngExpression } from "leaflet";
-import LocationList  from "../Components/location-list.component";
-
+// import LocationList from "../Components/location-list.component";
+import LocationDataService from "../Services/location.service";
+import { ILocationData } from '../Types';
 
 interface Props {
     position: LatLngExpression;
@@ -11,12 +12,13 @@ interface Props {
 
 interface State {
     focusedElementIndex: number | null;
+    locations: any[];
 }
 
 class Map extends React.Component<Props, State> {
     divElements: any[];
     timeout: any;
-    locations!: LocationList;
+    // locations!: LocationList;
 
     static defaultProps = {
         position: [0.789, 113.921],
@@ -25,8 +27,10 @@ class Map extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
 
-        this.state = { focusedElementIndex: null };
+        this.state = { focusedElementIndex: null, locations: [] };
         this.divElements = [];
+
+        // this.locations = new LocationList({});
     }
 
     focusElement(i: number | null) {
@@ -44,6 +48,35 @@ class Map extends React.Component<Props, State> {
         }
     }
 
+    componentDidMount() {
+        LocationDataService.getAll().orderBy("title", "asc").onSnapshot((items: any) => {
+            let locations = new Array<ILocationData>();
+            items.forEach((item: any) => {
+                let id = item.id;
+                let data = item.data();
+
+                locations.push({
+                    id: id,
+                    host: data.host,
+                    title: data.title,
+                    description: data.description,
+                    startDate: data.startDate,
+                    endDate: data.endDate,
+                    image: data.image,
+                    website: data.website,
+                    coords: data.coords,
+                    email: data.email,
+                    number: data.number
+                });
+            });
+
+            console.log(locations);
+            this.setState({
+                locations
+            });
+        });
+    }
+
     render() {
         return (
             <div className="pageContainer">
@@ -55,7 +88,8 @@ class Map extends React.Component<Props, State> {
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
 
-                        {this.locations.getLocations().map((location, i) => (
+
+                        {this.state.locations.map((location, i) => (
                             <Marker position={location.coords as LatLngExpression} key={i} eventHandlers={{
                                 click: (e) => {
                                     this.focusElement(i);
@@ -69,7 +103,7 @@ class Map extends React.Component<Props, State> {
                         ))}
                     </MapContainer>
                     <div className="locationsList">
-                        {this.locations ? this.locations.getLocations().map((location, i) => (
+                        {this.state.locations.map((location, i) => (
                             <div className={`eventGroup${this.state.focusedElementIndex === i ? " focus" : ""}`} key={i} ref={r => this.divElements.push(r)}>
                                 <img src={location.image} />
                                 <div className="eventText">
@@ -79,12 +113,12 @@ class Map extends React.Component<Props, State> {
                                     <p className="description">{location.description}</p>
                                 </div>
                             </div>
-                        )):""}
+                        ))}
                     </div>
                 </div>
             </div>
         );
-    }           
+    }
 }
 
 export default Map;
