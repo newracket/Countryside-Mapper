@@ -2,25 +2,35 @@ import React, { useRef } from "react";
 import CustomNavbar from "../Components/CustomNavbar";
 import { MapContainer, Popup, TileLayer, useMap, Marker } from 'react-leaflet'
 import { LatLngExpression } from "leaflet";
-import { LocationData } from "../Types";
+// import LocationList from "../Components/location-list.component";
+import LocationDataService from "../Services/location.service";
+import { ILocationData } from '../Types';
 
 interface Props {
     position: LatLngExpression;
-    locations: LocationData[];
 }
 
 interface State {
     focusedElementIndex: number | null;
+<<<<<<< HEAD
     searchValue: string;
+=======
+    locations: any[];
+>>>>>>> chris
 }
 
 class Map extends React.Component<Props, State> {
     divElements: any[];
     timeout: any;
+<<<<<<< HEAD
     locationsListElement: any;
+=======
+    // locations!: LocationList;
+>>>>>>> chris
 
     static defaultProps: Props = {
         position: [0.789, 113.921],
+<<<<<<< HEAD
         locations: [{
             coords: [0.812, 114.255],
             name: "Event 1",
@@ -88,11 +98,14 @@ class Map extends React.Component<Props, State> {
             email: "abc@gmail.com",
             phone: "111-111-1111"
         }]
+=======
+>>>>>>> chris
     };
 
     constructor(props: Props) {
         super(props);
 
+<<<<<<< HEAD
         this.state = { focusedElementIndex: null, searchValue: "" };
         this.divElements = [];
         this.locationsListElement = React.createRef();
@@ -100,6 +113,12 @@ class Map extends React.Component<Props, State> {
         this.focusElement = this.focusElement.bind(this);
         this.searchChanged = this.searchChanged.bind(this);
         this.filterWithSearch = this.filterWithSearch.bind(this);
+=======
+        this.state = { focusedElementIndex: null, locations: [] };
+        this.divElements = [];
+
+        // this.locations = new LocationList({});
+>>>>>>> chris
     }
 
     focusElement(i: number | null) {
@@ -118,6 +137,7 @@ class Map extends React.Component<Props, State> {
         }
     }
 
+<<<<<<< HEAD
     searchChanged(event: any) {
         const value = event?.target?.value;
         if (value === undefined) return;
@@ -141,6 +161,37 @@ class Map extends React.Component<Props, State> {
         return v;
     }
 
+=======
+    componentDidMount() {
+        LocationDataService.getAll().orderBy("title", "asc").onSnapshot((items: any) => {
+            let locations = new Array<ILocationData>();
+            items.forEach((item: any) => {
+                let id = item.id;
+                let data = item.data();
+
+                locations.push({
+                    id: id,
+                    host: data.host,
+                    title: data.title,
+                    description: data.description,
+                    startDate: data.startDate,
+                    endDate: data.endDate,
+                    image: data.image,
+                    website: data.website,
+                    coords: data.coords,
+                    email: data.email,
+                    number: data.number
+                });
+            });
+
+            console.log(locations);
+            this.setState({
+                locations
+            });
+        });
+    }
+
+>>>>>>> chris
     render() {
         return (
             <div className="pageContainer">
@@ -152,14 +203,21 @@ class Map extends React.Component<Props, State> {
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
 
+<<<<<<< HEAD
                         {this.props.locations.filter(this.filterWithSearch).map((location, i) => (
                             <Marker position={location.coords} key={i} eventHandlers={{
+=======
+
+                        {this.state.locations.map((location, i) => (
+                            <Marker position={location.coords as LatLngExpression} key={i} eventHandlers={{
+>>>>>>> chris
                                 click: (e) => {
                                     this.focusElement(i);
                                 }
                             }} />
                         ))}
                     </MapContainer>
+<<<<<<< HEAD
                     <div className="locationsContainer">
                         <input name="search" id="search" className="form-control" placeholder="Search" type="text" onChange={this.searchChanged} autoComplete="off" />
                         <div className="locationsList" ref={this.locationsListElement}>
@@ -180,6 +238,20 @@ class Map extends React.Component<Props, State> {
                                 );
                             })}
                         </div>
+=======
+                    <div className="locationsList">
+                        {this.state.locations.map((location, i) => (
+                            <div className={`eventGroup${this.state.focusedElementIndex === i ? " focus" : ""}`} key={i} ref={r => this.divElements.push(r)}>
+                                <img src={location.image} />
+                                <div className="eventText">
+                                    <h1><a href={location.website} target="_blank">{location.host}</a></h1>
+                                    <h2 className="host">Hosted by {location.host}</h2>
+                                    <p className="dates">{location.startDate} {"-"} {location.endDate}</p>
+                                    <p className="description">{location.description}</p>
+                                </div>
+                            </div>
+                        ))}
+>>>>>>> chris
                     </div>
                 </div>
             </div>
