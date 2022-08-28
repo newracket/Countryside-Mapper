@@ -17,7 +17,7 @@ class Map extends React.Component<Props, State> {
     divElements: any[];
     timeout: any;
 
-    static defaultProps = {
+    static defaultProps: Props = {
         position: [0.789, 113.921],
         locations: [{
             coords: [0.812, 114.255],
@@ -27,7 +27,9 @@ class Map extends React.Component<Props, State> {
             endDate: new Date(),
             description: "Description 1",
             imageLocation: "plants.jpg",
-            website: "https://google.com"
+            website: "https://google.com",
+            email: "abc@gmail.com",
+            phone: "111-111-1111"
         }, {
             coords: [0.721, 114.255],
             name: "Event 2",
@@ -36,7 +38,9 @@ class Map extends React.Component<Props, State> {
             endDate: new Date(),
             description: "Description 2",
             imageLocation: "plants.jpg",
-            website: "https://google.com"
+            website: "https://google.com",
+            email: "abc@gmail.com",
+            phone: "111-111-1111"
         }, {
             coords: [0.812, 112.255],
             name: "Event 3",
@@ -45,7 +49,9 @@ class Map extends React.Component<Props, State> {
             endDate: new Date(),
             description: "Description 3",
             imageLocation: "plants.jpg",
-            website: "https://google.com"
+            website: "https://google.com",
+            email: "abc@gmail.com",
+            phone: "111-111-1111"
         }, {
             coords: [0.721, 112.255],
             name: "Event 4",
@@ -54,7 +60,9 @@ class Map extends React.Component<Props, State> {
             endDate: new Date(),
             description: "Description 4",
             imageLocation: "plants.jpg",
-            website: "https://google.com"
+            website: "https://google.com",
+            email: "abc@gmail.com",
+            phone: "111-111-1111"
         }, {
             coords: [0.541, 122.255],
             name: "Event 5",
@@ -63,7 +71,9 @@ class Map extends React.Component<Props, State> {
             endDate: new Date(),
             description: "Description 5",
             imageLocation: "plants.jpg",
-            website: "https://google.com"
+            website: "https://google.com",
+            email: "abc@gmail.com",
+            phone: "111-111-1111"
         }, {
             coords: [0.721, 113.255],
             name: "Event 6",
@@ -72,7 +82,9 @@ class Map extends React.Component<Props, State> {
             endDate: new Date(),
             description: "Description 6",
             imageLocation: "plants.jpg",
-            website: "https://google.com"
+            website: "https://google.com",
+            email: "abc@gmail.com",
+            phone: "111-111-1111"
         }]
     };
 
@@ -133,6 +145,7 @@ class Map extends React.Component<Props, State> {
                                         <p className="dates">{location.startDate.toLocaleString("en-us", { dateStyle: "short", timeStyle: "short" })} - {location.endDate.toLocaleString("en-us", { dateStyle: "short", timeStyle: "short" })}</p>
 
                                         <p className="description">{location.description}</p>
+                                        <p className="contacts"><strong>Email:</strong> {location.email}, <strong>Phone Number</strong>: {location.phone}</p>
                                     </div>
                                 </div>
                             );
