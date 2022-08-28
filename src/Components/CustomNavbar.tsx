@@ -9,12 +9,13 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 interface Props {
     page: string;
     sticky: boolean;
+    transparent?: boolean;
 }
 
 class CustomNavbar extends React.Component<Props> {
     render() {
         return (
-            <Navbar className="nav" variant="dark" expand="lg" fixed={this.props.sticky ? "top" : undefined}>
+            <Navbar className={`nav${this.props.transparent ? " nav-transparent" : ""}`} variant="dark" expand="lg" fixed={this.props.sticky ? "top" : undefined}>
                 <Container>
                     <Navbar.Brand><img className="iconImg" src="/country.png" alt="Countryside Mapper"/> </Navbar.Brand>
 

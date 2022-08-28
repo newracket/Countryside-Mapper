@@ -30,7 +30,7 @@ class Register extends React.Component {
             });
 
         alert("Event successfuly registered!");
-        window.location.reload();
+        // window.location.reload();
     }
 
     render() {

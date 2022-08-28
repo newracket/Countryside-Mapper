@@ -6,7 +6,7 @@ class Home extends React.Component {
         return (
             <div className="homeContainer">
                 <div style={{backgroundImage: "url(/homeback.jpg)"}} className="homeBackground">
-                    <CustomNavbar page="home" sticky={false}></CustomNavbar>
+                    <CustomNavbar page="home" sticky={false} transparent={true}></CustomNavbar>
                     <div className="homeIntro">
                         <div className="homeText">Indonesia is one of the world’s major agricultural nations so we created an application to encourage people to visit rural Indonesia, thereby increasing tourism and stimulating the economy.</div>
                     </div>

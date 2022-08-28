@@ -134,7 +134,7 @@ class Map extends React.Component<Props, State> {
                                             <p className="dates">{new Date(location.startDate).toLocaleString("en-us", { dateStyle: "short", timeStyle: "short" })} - {new Date(location.endDate).toLocaleString("en-us", { dateStyle: "short", timeStyle: "short" })}</p>
 
                                             <p className="description">{location.description}</p>
-                                            <p className="contacts"><strong>Email:</strong> {location.email}, <strong>Phone Number</strong>: {location.phone}</p>
+                                            <p className="contacts"><strong>Email:</strong> {location.email}, <strong>Phone Number</strong>: {location.number}</p>
                                         </div>
                                     </div>
                                 );

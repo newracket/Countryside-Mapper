@@ -45,8 +45,12 @@ body,
   font-size: 36px;
 }
 
+.nav-transparent {
+  background-color: transparent !important;
+}
+
 .nav {
-  background-color: transparent;
+  background-color: #4CA0AB;
   font-family: 'Figtree', sans-serif;
   font-weight: 700;
   font-size: 20px;
