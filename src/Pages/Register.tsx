@@ -21,10 +21,6 @@ class Register extends React.Component {
             number: event.target?.phone?.value
         };
 
-<<<<<<< HEAD
-        alert("Event successfuly registered!");
-        window.location.reload();
-=======
         LocationDataService.create(data)
             .then(() => {
                 console.log("Created new item successfully!");
@@ -32,7 +28,9 @@ class Register extends React.Component {
             .catch((e: Error) => {
                 console.log(e);
             });
->>>>>>> chris
+
+        alert("Event successfuly registered!");
+        window.location.reload();
     }
 
     render() {
@@ -46,42 +44,42 @@ class Register extends React.Component {
 
                         <div className="inputGroup">
                             <label htmlFor="hostName">Host Name: </label>
-                            <input id="hostName" name="hostName" className="form-control" placeholder="Host Name" type="text" autoComplete="off" />
+                            <input id="hostName" name="hostName" className="form-control" placeholder="Host Name" type="text" autoComplete="off" required />
                         </div>
 
                         <div className="inputGroup">
                             <label htmlFor="eventName">Event Name: </label>
-                            <input id="eventName" name="eventName" className="form-control" placeholder="Event Name" type="text" autoComplete="off" />
+                            <input id="eventName" name="eventName" className="form-control" placeholder="Event Name" type="text" autoComplete="off" required />
                         </div>
 
                         <div className="inputGroup">
                             <label htmlFor="startDate">Start Date/Time: </label>
-                            <input id="startDate" name="startDate" className="form-control" placeholder="Start Date" type="datetime-local" autoComplete="off" />
+                            <input id="startDate" name="startDate" className="form-control" placeholder="Start Date" type="datetime-local" autoComplete="off" required />
                         </div>
 
                         <div className="inputGroup">
                             <label htmlFor="endDate">End Date/Time: </label>
-                            <input id="endDate" name="endDate" className="form-control" placeholder="End Date" type="datetime-local" autoComplete="off" />
+                            <input id="endDate" name="endDate" className="form-control" placeholder="End Date" type="datetime-local" autoComplete="off" required />
                         </div>
 
                         <div className="inputGroup">
                             <label htmlFor="description">Event Description: </label>
-                            <input id="description" name="description" className="form-control" placeholder="Event Description" type="text" autoComplete="off" />
+                            <input id="description" name="description" className="form-control" placeholder="Event Description" type="text" autoComplete="off" required />
                         </div>
 
                         <div className="inputGroup">
                             <label htmlFor="latitude">Event Location (Latitude): </label>
-                            <input id="latitude" name="latitude" className="form-control" placeholder="Event Description" type="number" autoComplete="off" />
+                            <input id="latitude" name="latitude" className="form-control" placeholder="Event Description" type="number" autoComplete="off" required />
                         </div>
 
                         <div className="inputGroup">
                             <label htmlFor="longitude">Event Location (Longitude): </label>
-                            <input id="longitude" name="longitude" className="form-control" placeholder="Event Description" type="number" autoComplete="off" />
+                            <input id="longitude" name="longitude" className="form-control" placeholder="Event Description" type="number" autoComplete="off" required />
                         </div>
 
                         <div className="inputGroup">
                             <label htmlFor="image">Image Location (URL): </label>
-                            <input id="image" name="image" className="form-control" placeholder="Image Location (URL)" type="url" accept="image/png, image/jpeg, image/jpg" autoComplete="off" />
+                            <input id="image" name="image" className="form-control" placeholder="Image Location (URL)" type="url" accept="image/png, image/jpeg, image/jpg" autoComplete="off" required />
                         </div>
 
                         <div className="inputGroup">
@@ -96,17 +94,13 @@ class Register extends React.Component {
 
                         <div className="inputGroup">
                             <label htmlFor="phone">Phone Number: </label>
-<<<<<<< HEAD
                             <input id="phone" name="phone" className="form-control" placeholder="Phone Number (will be displayed)" type="tel" autoComplete="off" />
-=======
-                            <input id="phone" name="phone" className="form-control" placeholder="Phone Number (will be displayed). Format: 112-345-6789" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" autoComplete="off" />
->>>>>>> chris
                         </div>
 
                         <button className="btn btn-primary">Submit</button>
-                    </form>
-                </Container>
-            </div>
+                    </form >
+                </Container >
+            </div >
         );
     }
 }

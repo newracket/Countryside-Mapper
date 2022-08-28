@@ -13,7 +13,7 @@ class App extends React.Component {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/map" element={<Map />} />
+          <Route path="/map" element={<Map position={[0.789, 113.921]} />} />
         </Routes>
       </BrowserRouter>
     );
