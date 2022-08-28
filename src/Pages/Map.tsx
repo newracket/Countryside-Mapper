@@ -1,10 +1,9 @@
-import React, { useRef } from "react";
+import React from "react";
 import CustomNavbar from "../Components/CustomNavbar";
-import { MapContainer, Popup, TileLayer, useMap, Marker } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker } from 'react-leaflet'
 import { LatLngExpression } from "leaflet";
-// import LocationList from "../Components/location-list.component";
 import LocationDataService from "../Services/location.service";
-import { ILocationData, LocationData } from '../Types';
+import { ILocationData } from '../Types';
 
 interface Props {
     position: LatLngExpression;
@@ -58,16 +57,16 @@ class Map extends React.Component<Props, State> {
         });
     }
 
-    filterWithSearch(element: LocationData) {
+    filterWithSearch(element: ILocationData) {
         if (this.state.searchValue.length === 0) return true;
 
         const v = (
-            element.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+            element.title.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
             element.host.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
             element.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
             element.website.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
             element.email.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
-            element.phone.toLowerCase().includes(this.state.searchValue.toLowerCase())
+            element.number.toLowerCase().includes(this.state.searchValue.toLowerCase())
         );
         return v;
     }
