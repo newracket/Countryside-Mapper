@@ -71,16 +71,20 @@ body,
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  padding: 20px;
+  max-width: 50vw;
 }
 
 .locationsList {
   overflow-y: auto;
+  width: 100%;
+
+  padding: 20px;
 }
 
 #search {
-  margin-bottom: 20px;
   border-color: black;
+  margin: 20px;
+  max-width: 95%;
 }
 
 .eventGroup {
@@ -96,6 +100,7 @@ body,
   display: flex;
   flex-direction: row;
   height: 150px;
+  width: 100%;
 }
 
 .eventGroup.focus {
@@ -105,6 +110,8 @@ body,
 .eventText {
   display: inline-block;
   margin-left: 10px;
+  flex-grow: 3;
+  min-width: 0;
 }
 
 .eventText>h1 {
@@ -133,6 +140,12 @@ body,
 
 .eventText>.description {
   margin: 0;
+  width: 100%;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  /* display: block; */
 }
 
 /* Login CSS */
@@ -222,7 +235,8 @@ hr {
   padding: 0 40px 0 0;
 }
 
-.navbar-brand, .nav-link {
+.navbar-brand,
+.nav-link {
   color: #C0D31F !important;
   text-shadow: 1px 1px 2px black;
 }

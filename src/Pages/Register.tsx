@@ -19,6 +19,9 @@ class Register extends React.Component {
             email: event.target?.email?.value,
             phone: event.target?.phone?.value
         };
+
+        alert("Event successfuly registered!");
+        window.location.reload();
     }
 
     render() {
@@ -72,17 +75,17 @@ class Register extends React.Component {
 
                         <div className="inputGroup">
                             <label htmlFor="website">Website: </label>
-                            <input id="website" name="website" className="form-control" placeholder="Website" type="url" autoComplete="off" required />
+                            <input id="website" name="website" className="form-control" placeholder="Website" type="url" autoComplete="off" />
                         </div>
 
                         <div className="inputGroup">
                             <label htmlFor="email">Email Address: </label>
-                            <input id="email" name="email" className="form-control" placeholder="Email (will be displayed)" type="email" autoComplete="off" required />
+                            <input id="email" name="email" className="form-control" placeholder="Email (will be displayed)" type="email" autoComplete="off" />
                         </div>
 
                         <div className="inputGroup">
                             <label htmlFor="phone">Phone Number: </label>
-                            <input id="phone" name="phone" className="form-control" placeholder="Phone Number (will be displayed). Format: 112-345-6789" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" autoComplete="off" required />
+                            <input id="phone" name="phone" className="form-control" placeholder="Phone Number (will be displayed)" type="tel" autoComplete="off" />
                         </div>
 
                         <button className="btn btn-primary">Submit</button>

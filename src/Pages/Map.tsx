@@ -17,6 +17,7 @@ interface State {
 class Map extends React.Component<Props, State> {
     divElements: any[];
     timeout: any;
+    locationsListElement: any;
 
     static defaultProps: Props = {
         position: [0.789, 113.921],
@@ -32,24 +33,24 @@ class Map extends React.Component<Props, State> {
             email: "abc@gmail.com",
             phone: "111-111-1111"
         }, {
-            coords: [0.721, 114.255],
+            coords: [2.721, 114.255],
             name: "Event 2",
             host: "Host 2",
             startDate: new Date(),
             endDate: new Date(),
             description: "Description 2",
-            imageLocation: "plants.jpg",
+            imageLocation: "plants2.jpg",
             website: "https://google.com",
             email: "abc@gmail.com",
             phone: "111-111-1111"
         }, {
-            coords: [0.812, 112.255],
+            coords: [-0.812, 112.255],
             name: "Event 3",
             host: "Host 3",
             startDate: new Date(),
             endDate: new Date(),
             description: "Description 3",
-            imageLocation: "plants.jpg",
+            imageLocation: "plants3.jpg",
             website: "https://google.com",
             email: "abc@gmail.com",
             phone: "111-111-1111"
@@ -60,7 +61,7 @@ class Map extends React.Component<Props, State> {
             startDate: new Date(),
             endDate: new Date(),
             description: "Description 4",
-            imageLocation: "plants.jpg",
+            imageLocation: "plants4.webp",
             website: "https://google.com",
             email: "abc@gmail.com",
             phone: "111-111-1111"
@@ -71,7 +72,7 @@ class Map extends React.Component<Props, State> {
             startDate: new Date(),
             endDate: new Date(),
             description: "Description 5",
-            imageLocation: "plants.jpg",
+            imageLocation: "plants5.jpg",
             website: "https://google.com",
             email: "abc@gmail.com",
             phone: "111-111-1111"
@@ -82,7 +83,7 @@ class Map extends React.Component<Props, State> {
             startDate: new Date(),
             endDate: new Date(),
             description: "Description 6",
-            imageLocation: "plants.jpg",
+            imageLocation: "plants6.jpg",
             website: "https://google.com",
             email: "abc@gmail.com",
             phone: "111-111-1111"
@@ -94,6 +95,7 @@ class Map extends React.Component<Props, State> {
 
         this.state = { focusedElementIndex: null, searchValue: "" };
         this.divElements = [];
+        this.locationsListElement = React.createRef();
 
         this.focusElement = this.focusElement.bind(this);
         this.searchChanged = this.searchChanged.bind(this);
@@ -111,6 +113,7 @@ class Map extends React.Component<Props, State> {
 
         if (i !== null) {
             this.divElements[i].scrollIntoView();
+            this.locationsListElement.current.scrollBy(0, -10);
             this.timeout = setTimeout(() => this.focusElement(null), 2000);
         }
     }
@@ -159,7 +162,7 @@ class Map extends React.Component<Props, State> {
                     </MapContainer>
                     <div className="locationsContainer">
                         <input name="search" id="search" className="form-control" placeholder="Search" type="text" onChange={this.searchChanged} autoComplete="off" />
-                        <div className="locationsList">
+                        <div className="locationsList" ref={this.locationsListElement}>
 
                             {this.props.locations.filter(this.filterWithSearch).map((location, i) => {
                                 return (
