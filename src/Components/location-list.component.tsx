@@ -35,10 +35,16 @@ export default class LocationsList extends Component<Props, State> {
       let data = item.data();
       locations.push({
         id: id,
+        host: data.host,
         title: data.title,
         description: data.description,
-        date: data.date,
-        published: data.published
+        startDate: data.startDate,
+        endDate: data.endDate,
+        image: data.image,
+        website: data.website,
+        coords: data.coords,
+        email: data.email,
+        number: data.number
       });
     });
     this.setState({
