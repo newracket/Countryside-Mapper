@@ -15,8 +15,38 @@ body,
   height: 100%;
 }
 
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.homeBackground {
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.aboutCard {
+  padding: 50px 500px 15px 50px;
+}
+
+.homeIntro {
+  display: flex;
+  flex-direction: row;
+  padding-top: 175px;
+  padding-bottom: 275px;
+  color: white;
+  font-family: 'Figtree', sans-serif;
+}
+.homeText{
+  margin: 0 600px 0 100px;
+  font-weight: 700;
+  font-size: 36px;
+}
+
 .nav {
-  background-color: #4CA0AB;
+  background-color: transparent;
   font-family: 'Figtree', sans-serif;
   font-weight: 700;
   font-size: 20px;
@@ -189,10 +219,12 @@ hr {
   object-fit: cover;
   width: 100%;
   height: 50px;
+  padding: 0 40px 0 0;
 }
 
 .navbar-brand, .nav-link {
   color: #C0D31F !important;
+  text-shadow: 1px 1px 2px black;
 }
 
 .nav-link:hover {
