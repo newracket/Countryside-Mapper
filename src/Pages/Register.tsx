@@ -43,29 +43,36 @@ class Register extends React.Component<{}, State> {
     }
 
     uploadToFirebase(event: any, lat: number, long: number) {
-        const data: ILocationData = {
-            title: event.target?.eventName?.value,
-            host: event.target?.hostName?.value,
-            startDate: event.target?.startDate?.value.toString(),
-            endDate: event.target?.endDate?.value.toString(),
-            description: event.target?.description?.value,
-            website: event.target?.website?.value,
-            image: event.target?.image?.value,
-            coords: [lat, long],
-            email: event.target?.email?.value,
-            number: event.target?.phone?.value
-        };
+        const file = event.target.image.files[0];
+        const reader = new FileReader();
 
-        LocationDataService.create(data)
-            .then(() => {
-                console.log("Created new item successfully!");
-            })
-            .catch((e: Error) => {
-                console.log(e);
-            });
+        reader.onload = function (e) {
+            const data: ILocationData = {
+                title: event.target?.eventName?.value,
+                host: event.target?.hostName?.value,
+                startDate: event.target?.startDate?.value.toString(),
+                endDate: event.target?.endDate?.value.toString(),
+                description: event.target?.description?.value,
+                website: event.target?.website?.value,
+                image: reader.result as string,
+                coords: [lat, long],
+                email: event.target?.email?.value,
+                number: event.target?.phone?.value
+            };
 
-        alert("Event successfuly registered!");
-        window.location.reload();
+            LocationDataService.create(data)
+                .then(() => {
+                    console.log("Created new item successfully!");
+                })
+                .catch((e: Error) => {
+                    console.log(e);
+                });
+
+            alert("Event successfuly registered!");
+            window.location.reload();
+        }
+
+        reader.readAsDataURL(file);
     }
 
     async getLocation() {
@@ -114,6 +121,8 @@ class Register extends React.Component<{}, State> {
                             <label htmlFor="address">Address or (Lat, Long) </label>
                             <input id="address" name="address" className="form-control" value={this.state.location} placeholder="Allow Location Access or Manually Enter" type="text" autoComplete="off"
                                 onClick={() => {
+                                    if (this.state.location !== "") return;
+
                                     this.getLocation()
                                         .then((coords: any) => {
                                             this.setState({
@@ -129,7 +138,7 @@ class Register extends React.Component<{}, State> {
 
                         <div className="inputGroup">
                             <label htmlFor="image">Image Location (URL): </label>
-                            <input id="image" name="image" className="form-control" placeholder="Image Location (URL)" type="url" accept="image/png, image/jpeg, image/jpg" autoComplete="off" required />
+                            <input id="image" name="image" className="form-control" placeholder="Image Location (URL)" type="file" accept="image/png, image/jpeg, image/jpg" autoComplete="off" required />
                         </div>
 
                         <div className="inputGroup">
