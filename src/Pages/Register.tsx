@@ -4,10 +4,45 @@ import CustomNavbar from "../Components/CustomNavbar";
 import { ILocationData } from "../Types";
 import LocationDataService from "../Services/location.service";
 
-class Register extends React.Component {
+interface State {
+    location: string,
+}
+
+
+
+class Register extends React.Component<{}, State> {
+    constructor(props: {}) {
+        super(props);
+
+        this.state = { location: "" };
+    }
+
     formSubmit(event: any) {
         event.preventDefault();
 
+        const matches = new RegExp("\\(([\\d.-]+),\\s+([\\d.-]+)\\)", "g").exec(event.target.address.value);
+        if (matches !== null && matches.length === 3) {
+            return this.uploadToFirebase(event, parseFloat(matches[1]), parseFloat(matches[2]));
+        }
+
+        const apiRequest = `http://api.positionstack.com/v1/forward?access_key=bedfc7a12881cb1b9a3009b1712a0bb0&query=${event.target.address.value}`;
+        fetch(apiRequest)
+            .then(res => res.json())
+            .then(res => {
+                const data = res.data;
+
+                if (data.length > 0) {
+                    const lat = data[0]?.latitude;
+                    const long = data[0]?.longitude;
+
+                    if (lat === undefined || long === undefined) return;
+                    this.uploadToFirebase(event, lat, long);
+                }
+            })
+            .catch(err => console.log(err));
+    }
+
+    uploadToFirebase(event: any, lat: number, long: number) {
         const data: ILocationData = {
             title: event.target?.eventName?.value,
             host: event.target?.hostName?.value,
@@ -16,7 +51,7 @@ class Register extends React.Component {
             description: event.target?.description?.value,
             website: event.target?.website?.value,
             image: event.target?.image?.value,
-            coords: [event.target?.latitude?.value, event.target.longitude.value],
+            coords: [lat, long],
             email: event.target?.email?.value,
             number: event.target?.phone?.value
         };
@@ -33,13 +68,21 @@ class Register extends React.Component {
         window.location.reload();
     }
 
+    async getLocation() {
+        return new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(pos => {
+                resolve(pos.coords);
+            });
+        });
+    }
+
     render() {
         return (
             <div className="pageContainer">
                 <CustomNavbar page="login" sticky={false}></CustomNavbar>
 
                 <Container className="loginContainer">
-                    <form className="registerDiv" onSubmit={this.formSubmit}>
+                    <form className="registerDiv" onSubmit={event => this.formSubmit(event)}>
                         <h2>Register</h2>
 
                         <div className="inputGroup">
@@ -67,14 +110,21 @@ class Register extends React.Component {
                             <input id="description" name="description" className="form-control" placeholder="Event Description" type="text" autoComplete="off" required />
                         </div>
 
-                        <div className="inputGroup">
-                            <label htmlFor="latitude">Event Location (Latitude): </label>
-                            <input id="latitude" name="latitude" className="form-control" placeholder="Event Description" type="number" autoComplete="off" required />
-                        </div>
-
-                        <div className="inputGroup">
-                            <label htmlFor="longitude">Event Location (Longitude): </label>
-                            <input id="longitude" name="longitude" className="form-control" placeholder="Event Description" type="number" autoComplete="off" required />
+                        <div className="inputGroup form-group has-feedback">
+                            <label htmlFor="address">Address or (Lat, Long) </label>
+                            <input id="address" name="address" className="form-control" value={this.state.location} placeholder="Allow Location Access or Manually Enter" type="text" autoComplete="off"
+                                onClick={() => {
+                                    this.getLocation()
+                                        .then((coords: any) => {
+                                            this.setState({
+                                                location: `(${coords.latitude}, ${coords.longitude})`
+                                            });
+                                        });
+                                }} onChange={event => {
+                                    this.setState({
+                                        location: event.target.value
+                                    });
+                                }} required />
                         </div>
 
                         <div className="inputGroup">
