@@ -63,13 +63,13 @@ class Register extends React.Component<{}, State> {
             LocationDataService.create(data)
                 .then(() => {
                     console.log("Created new item successfully!");
+                    alert("Event successfuly registered!");
+                    window.location.reload();
                 })
                 .catch((e: Error) => {
                     console.log(e);
                 });
 
-            alert("Event successfuly registered!");
-            window.location.reload();
         }
 
         reader.readAsDataURL(file);
@@ -137,7 +137,7 @@ class Register extends React.Component<{}, State> {
                         </div>
 
                         <div className="inputGroup">
-                            <label htmlFor="image">Image Location (URL): </label>
+                            <label htmlFor="image">Image: </label>
                             <input id="image" name="image" className="form-control" placeholder="Image Location (URL)" type="file" accept="image/png, image/jpeg, image/jpg" autoComplete="off" required />
                         </div>
 
