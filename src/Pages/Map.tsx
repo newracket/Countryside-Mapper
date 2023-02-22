@@ -93,7 +93,6 @@ class Map extends React.Component<Props, State> {
                 });
             });
 
-            console.log(locations);
             this.setState({
                 locations
             });
