@@ -2,7 +2,7 @@
 
 ### Application
 
-The app is build using ReactJS and Typescript, along with a firebase database in
+The app is build using ReactJS and Typescript, along with a Firebase database in
 the backend. You can view a live version
 at [http://aniketg.me:4001/](http://aniketg.me:4001/).
 
