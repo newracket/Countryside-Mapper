@@ -4,7 +4,7 @@
 
 The app is build using ReactJS and Typescript, along with a Firebase database in
 the backend. You can view a live version
-at [http://aniketg.me:4001/](http://aniketg.me:4001/).
+at [https://countrysidemapper.aniketg.me/](https://countrysidemapper.aniketg.me/).
 
 This project was made for the international
 hackathon, [Garuda Hacks](https://garudahacks.com/). I participated in a group
